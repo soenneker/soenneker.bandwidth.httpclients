@@ -1,20 +1,19 @@
 using Soenneker.Bandwidth.HttpClients.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Bandwidth.HttpClients.Tests;
 
-[Collection("Collection")]
-public sealed class BandwidthOpenApiHttpClientTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public sealed class BandwidthOpenApiHttpClientTests : HostedUnitTest
 {
     private readonly IBandwidthOpenApiHttpClient _httpclient;
 
-    public BandwidthOpenApiHttpClientTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public BandwidthOpenApiHttpClientTests(Host host) : base(host)
     {
         _httpclient = Resolve<IBandwidthOpenApiHttpClient>(true);
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 

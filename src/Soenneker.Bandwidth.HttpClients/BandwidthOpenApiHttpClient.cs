@@ -11,6 +11,7 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.Bandwidth.HttpClients;
 
+/// <inheritdoc cref="IBandwidthOpenApiHttpClient" />
 public sealed class BandwidthOpenApiHttpClient : IBandwidthOpenApiHttpClient
 {
     private readonly IHttpClientCache _httpClientCache;

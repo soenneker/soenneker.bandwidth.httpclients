@@ -29,7 +29,7 @@ public sealed class BandwidthOpenApiHttpClient : IBandwidthOpenApiHttpClient
     {
         return _httpClientCache.Get(nameof(BandwidthOpenApiHttpClient), (config: _config, baseUrl: _config["Bandwidth:ClientBaseUrl"] ?? _prodBaseUrl), static state =>
         {
-            var apiKey = state.config.GetValueStrict<string>("Bandwidth:ApiKey");
+            var apiKey = state.config.GetStringStrict("Bandwidth:ApiKey");
             string authHeaderName = state.config["Bandwidth:AuthHeaderName"] ?? "Authorization";
             string authHeaderValueTemplate = state.config["Bandwidth:AuthHeaderValueTemplate"] ?? "Bearer {token}";
             string authHeaderValue = authHeaderValueTemplate.Replace("{token}", apiKey, StringComparison.Ordinal);
